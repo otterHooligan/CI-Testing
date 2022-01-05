@@ -27,7 +27,7 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: main.tex
+          root_file: rulebook/rulebook.tex
 
       - name: Create Release
         id: create_release
@@ -47,6 +47,6 @@ jobs:
           GITHUB_TOKEN: $
         with:
           upload_url: $ 
-          asset_path: ./main.pdf
-          asset_name: main.pdf
+          asset_path: ./rulebook.pdf
+          asset_name: rulebook.pdf
           asset_content_type: pdf
