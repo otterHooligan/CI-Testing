@@ -1,0 +1,7 @@
+# Ignores everything except .tex files and git/dev files
+**/*
+!**/
+!**/*.tex
+!.gitignore
+!.devcontainer/*
+!.gitlab-ci.yml
