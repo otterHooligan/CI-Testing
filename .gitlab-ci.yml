@@ -1,17 +1,11 @@
 image: blang/latex
 
-compile-latex:
+pages:
   script:
-    - cd rulebook
-    - latexmk -pdf rulebook.tex
-
-deploy:
-  script:
-    - echo pwd
-    - cd ~
-    - echo pwd
     - export EXPORTDIR=`pwd`/public
     - mkdir -p $EXPORTDIR
+    - cd rulebook
+    - latexmk -pdf rulebook.tex
     - mv rulebook.pdf $EXPORTDIR/rulebook.pdf
   artifacts:
     paths:
