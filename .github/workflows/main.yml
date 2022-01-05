@@ -28,8 +28,6 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: rulebook/rulebook.tex
-        env:
-          TEXINPUTS: ".:./0-Introduction//:"
 
       - name: Create Release
         id: create_release
