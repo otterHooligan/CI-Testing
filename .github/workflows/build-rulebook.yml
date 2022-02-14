@@ -1,0 +1,35 @@
+name: Compile and Export MLR Rulebook
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: sudo apt-get install texlive texlive-publishers texlive-science latexmk cm-super
+
+    - name: Compile Rulebook
+      run: |
+        #Create artifact directory
+        mkdir -p ${{ github.workspace }}/artifact
+        
+        #Build rulebook
+        cd rulebook
+        latexmk -pdf rulebook.tex
+        #Move built rulebook to artifact directory
+        mv rulebook.pdf ${{ github.workspace }}/artifact/rulebook.pdf
+  
+    - name: Save Rulebook.pdf Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: rulebook.pdf
+        path: ${{ github.workspace }}/artifact/rulebook.pdf
+
